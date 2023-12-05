@@ -2,3 +2,5 @@ version: '3'
 services:
   web:
     build: .
+    ports:
+      - "80:5000"
