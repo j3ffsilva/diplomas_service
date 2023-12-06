@@ -1,4 +1,4 @@
-from models import *
+from diploma_service.models import *
 
 class BancoDeDados:
 

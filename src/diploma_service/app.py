@@ -1,10 +1,18 @@
-from services import *
+from diploma_service.services import *
 from flask import Flask, jsonify, request
 
 app = Flask(__name__)
 srv = ServicoConsultaDiplomas()
 
 @app.route('/diplomas') 
+def consultar_diplomas(): 
+    cpf = request.args.get('cpf')
+    diplomas = srv.consultar_diplomas(cpf)
+    diplomas_dict = [d.to_json() for d in diplomas]
+    return jsonify(diplomas_dict)
+
+
+@app.route('/traceability_matrix') 
 def consultar_diplomas(): 
     cpf = request.args.get('cpf')
     diplomas = srv.consultar_diplomas(cpf)

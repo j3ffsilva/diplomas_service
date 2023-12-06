@@ -20,6 +20,11 @@ class Diplomado:
         if (not diploma in self.diplomas()):
             self._diplomas.append(diploma)
 
+    def __eq__(self, object):
+        if (self.cpf == object.cpf and self.nome == object.nome and self.endereco == object.endereco):
+            return True
+        return False    
+
 class Diploma:
     def __init__(self, id, curso, data_conclusao):
         self.id = id
@@ -40,3 +45,8 @@ class Diploma:
     
     def add_diplomado(self, diplomado):
         self._diplomado = diplomado
+
+    def __eq__(self, object):
+        if (self.id == object.id and self.curso == object.curso and self.data_conclusao == object.data_conclusao):
+            return True
+        return False
