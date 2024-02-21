@@ -14,5 +14,5 @@ EXPOSE 5000
 # `"-b", "0.0.0.0:5000"` especifica o binding (associação) do servidor Gunicorn na porta 5000 acessível de fora do container
 # `"app:app"` indica que o Gunicorn deve usar o objeto app localizado no módulo app.py.
 
-# Inicia o Gunicorn com o aplicativo Flask localizado em src/diploma_service/app.py
-CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:5000", "diploma_service.app:app"]
+# Inicia o Gunicorn com o aplicativo Flask localizado em app.py
+CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:5000", "app:app"]
