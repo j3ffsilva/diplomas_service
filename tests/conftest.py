@@ -1,4 +1,4 @@
-from diploma_service.tracebility import Trace
+from tracebility import Trace
 
 def pytest_terminal_summary(terminalreporter, exitstatus, config):
     """

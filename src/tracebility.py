@@ -20,7 +20,10 @@ class Trace:
         def decorator(func):
             # Armazena o nome do método e o código do requisito associado no dicionário.
             Trace.requirements_dict[func.__name__] = req_code
-            return func
+            def wrapper(*args, **kwargs):
+                return func(*args, **kwargs)
+            wrapper.__name__ = func.__name__
+            return wrapper
         return decorator
 
     @staticmethod
@@ -31,11 +34,14 @@ class Trace:
         :return: Um decorador que anota o teste com o código de requisito.
         """
         def decorator(func):
+            def wrapper(*args, **kwargs):
+                return func(*args, **kwargs)
+            wrapper.__name__ = func.__name__
             if req_code in Trace.test_requirements_dict:
-                Trace.test_requirements_dict[req_code].append(func.__name__)
+                Trace.test_requirements_dict[req_code].append(wrapper.__name__)
             else:
-                Trace.test_requirements_dict[req_code] = [func.__name__]
-            return func
+                Trace.test_requirements_dict[req_code] = [wrapper.__name__]
+            return wrapper
         return decorator
 
     @staticmethod

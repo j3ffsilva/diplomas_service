@@ -1,0 +1,13 @@
+from services import ServicoConsultaDiplomas
+from models import (
+    Diploma, 
+    Diplomado
+)
+
+def test_consultar_diplomado_por_cpf():
+    srv = ServicoConsultaDiplomas()
+
+    returned = srv.consultar_diplomado("1")
+    expected = Diplomado(cpf="1", nome="João da Silva", endereco="Rua das Flores, 123, Cidade A")
+    
+    assert returned == expected
